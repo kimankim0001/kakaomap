@@ -78,7 +78,6 @@
             let image = $('#image').val();
             let title = $('#title').val();
             let star = $('#star').val();
-            let map = $('#map').val();
             let comment = $('#comment').val();            
 
             let doc = {
@@ -86,7 +85,6 @@
                 'image': image,
                 'title': title,
                 'star': star,
-                'map': map,
                 'comment': comment
             };
             await addDoc(collection(db, "cafes"), doc);
