@@ -154,7 +154,7 @@
             <label for="floatingInput">추천 이유</label>
         </div>
         <div id="map" style="width: 450px;height:450px;margin: 20px auto 20px auto;"></div>
-        <p font color = white;>지도를 클릭해주세요!</p>
+        <p><em>지도를 클릭해주세요!</em></p> 
         <div id="clickLatlng"></div>
 
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=696bfa0dfe69ec69334bb416e0d4b07c"></script>
@@ -185,8 +185,8 @@
                 // 마커 위치를 클릭한 위치로 옮깁니다
                 marker.setPosition(latlng);
 
-                var message = latlng.getLat();
-                var message = latlng.getLng();
+                var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
+                message += '경도는 ' + latlng.getLng() + ' 입니다';
 
                 var resultDiv = document.getElementById('clickLatlng');
                 resultDiv.innerHTML = message;
