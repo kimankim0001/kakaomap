@@ -78,13 +78,15 @@
             let image = $('#image').val();
             let title = $('#title').val();
             let star = $('#star').val();
-            let comment = $('#comment').val();
+            let map = $('#map').val();
+            let comment = $('#comment').val();            
 
             let doc = {
                 'name': name,
                 'image': image,
                 'title': title,
                 'star': star,
+                'map': map,
                 'comment': comment
             };
             await addDoc(collection(db, "cafes"), doc);
@@ -105,11 +107,11 @@
 
             let temp_html = `
             <div class="col">
-                <div class="card h-100">
-                    <p class="card-text">${name}</p>
+                <div class="card h-100">                    
                     <img src="${image}"
                         class="card-img-top" alt="...">
                     <div class="card-body">
+                        <p class="card-text">${name}</p>
                         <h5 class="card-title">${title}</h5>
                         <p class="card-text">${star}</p>
                         <p class="card-text">${comment}</p>
