@@ -24,17 +24,17 @@
             align-items: center;
             justify-content: center;
 
-            background-image: url(https://cdn.pixabay.com/photo/2017/04/19/13/03/coffee-2242213_1280.jpg);
+            background-image: url(https://cdn.pixabay.com/photo/2020/04/06/13/37/coffee-5009730_1280.png);
             background-position: center;
             background-size: cover;
         }
 
         body {
-            background-color: rgb(46, 21, 4);
+            background-color:pink
         }
 
         .mycards {
-            width: 1200px;
+            width: 1500px;
             margin: 20px auto 20px auto;
         }
 
@@ -42,7 +42,7 @@
             width: 500px;
             margin: 20px auto 20px auto;
 
-            border: 1px solid white;
+            border: 1px solid white
             padding: 20px;
             border-radius: 5px;
         }
@@ -51,9 +51,6 @@
             width: 100%;
         }
 
-        .mapvar {
-            background-color: white;
-        }
     </style>
 
     <script type="module">
@@ -170,12 +167,12 @@
         </div>
 
         <div id="map" style="width: 450px;height:450px;margin: 20px auto 20px auto;"></div>
-        <p style="color: white;"><em>지도를 클릭하면 아래에 위도와 경도가 나와요~!</em></p>
+        <p><em>지도를 클릭하면 아래에 위도와 경도가 나와요~!</em></p>
         <div id="clickLatlng"></div>
 
         <script type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=696bfa0dfe69ec69334bb416e0d4b07c"></script>
-        <script id="mapvar">
+        <script>
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                 mapOption = {
                     center: new kakao.maps.LatLng(37.542152, 127.056339), // 지도의 중심좌표
