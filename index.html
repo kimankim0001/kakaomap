@@ -50,6 +50,10 @@
         .mypostingbox>button {
             width: 100%;
         }
+
+        .mapvar {
+            background-color: white;
+        }
     </style>
 
     <script type="module">
@@ -166,12 +170,12 @@
         </div>
 
         <div id="map" style="width: 450px;height:450px;margin: 20px auto 20px auto;"></div>
-        <p style="color: white;"><em>지도를 클릭해주세요!</em></p>
+        <p style="color: white;"><em>지도를 클릭하면 아래에 위도와 경도가 나와요~!</em></p>
         <div id="clickLatlng"></div>
 
         <script type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=696bfa0dfe69ec69334bb416e0d4b07c"></script>
-        <script>
+        <script id="mapvar">
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                 mapOption = {
                     center: new kakao.maps.LatLng(37.542152, 127.056339), // 지도의 중심좌표
@@ -200,8 +204,6 @@
 
                 var message = '클릭한 위치의 위도와 경도 ' + latlng.getLat() + ',';
                 message += latlng.getLng();
-
-                var color = "#d3d3d3"
 
                 var resultDiv = document.getElementById('clickLatlng');
                 resultDiv.innerHTML = message;
