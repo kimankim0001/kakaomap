@@ -14,6 +14,7 @@
         * {
             font-family: "Black Han Sans", sans-serif;
         }
+
         .mytitle {
             height: 250px;
             color: white;
@@ -27,9 +28,11 @@
             background-position: center;
             background-size: cover;
         }
+
         body {
             background-color: rgb(46, 21, 4);
         }
+
         .mycards {
             width: 1200px;
             margin: 20px auto 20px auto;
@@ -43,12 +46,12 @@
             padding: 20px;
             border-radius: 5px;
         }
+
         .mypostingbox>button {
             width: 100%;
         }
-        
     </style>
-    
+
     <script type="module">
         // Firebase SDK 라이브러리 가져오기
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
@@ -78,13 +81,15 @@
             let image = $('#image').val();
             let title = $('#title').val();
             let star = $('#star').val();
-            let comment = $('#comment').val();            
+            let ll = $('#ll').val();
+            let comment = $('#comment').val();
 
             let doc = {
                 'name': name,
                 'image': image,
                 'title': title,
                 'star': star,
+                'll': ll,
                 'comment': comment
             };
             await addDoc(collection(db, "cafes"), doc);
@@ -98,9 +103,10 @@
             let row = doc.data();
 
             let name = row['name'];
-            let image = row['image'];         
+            let image = row['image'];
             let title = row['title'];
             let comment = row['comment'];
+            let ll = row['ll'];
             let star = row['star'];
 
             let temp_html = `
@@ -113,6 +119,7 @@
                         <h5 class="card-title">${title}</h5>
                         <p class="card-text">${star}</p>
                         <p class="card-text">${comment}</p>
+                        <p class="card-text"><a href="https://map.kakao.com/link/map/${ll}">지도링크</a></p>
                     </div>
                 </div>
             </div>`;
@@ -123,7 +130,7 @@
 
 <body>
     <div class="mytitle">
-        <h1>분위기 좋은 카페 공유스~</h1>        
+        <h1>분위기 좋은 카페 공유스~</h1>
     </div>
     <div class="mypostingbox" id="mypostingbox">
         <div class="form-floating mb-3">
@@ -137,6 +144,10 @@
         <div class="form-floating mb-3">
             <input type="email" class="form-control" id="title" placeholder="추천 카페 상호명">
             <label for="floatingInput">추천 카페 상호명</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="ll" placeholder="위도경도">
+            <label for="floatingInput">지도상의 위도,경도</label>
         </div>
         <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">별점</label>
@@ -153,12 +164,13 @@
             <input type="email" class="form-control" id="comment" placeholder="추천 이유">
             <label for="floatingInput">추천 이유</label>
         </div>
-        
+
         <div id="map" style="width: 450px;height:450px;margin: 20px auto 20px auto;"></div>
-        <p style="color: white;"><em>지도를 클릭해주세요!</em></p> 
+        <p style="color: white;"><em>지도를 클릭해주세요!</em></p>
         <div id="clickLatlng"></div>
 
-        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=696bfa0dfe69ec69334bb416e0d4b07c"></script>
+        <script type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=696bfa0dfe69ec69334bb416e0d4b07c"></script>
         <script>
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                 mapOption = {
@@ -196,6 +208,7 @@
         </script>
         <button id="mapbtn" type="button" class="btn btn-warning" onclick="window.open('kakaomap.html')">지도 찾기</button>
         <button id="postingbtn" type="button" class="btn btn-danger">기록하기</button>
+
 
 
     </div>
